@@ -24,22 +24,87 @@ var database = firebase.database();
     var firstTrain = $("#first-train-input").val();
     var frequency = $("#frequency-input").val();
 
+    console.log(trainName, destination, firstTrain, frequency);
 
-     database.ref().push ({
+
+//moment() get current time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    
+    var firstTime = moment(firstTrain, "hh:mm").subtract(1, "years");
+    console.log(firstTime); 
+
+    // Difference between the times
+    var timeDifference = moment().diff(moment(firstTime), "minutes");
+    console.log(timeDifference);
+
+    // Time apart (remainder)
+    var tRemainder = timeDifference % frequency;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    var tMinutesTillTrain = frequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+
+  var newEntry = {
       trainName: trainName,
       destination: destination,
       firstTrain: firstTrain,
       frequency: frequency,
-     });
+  };
+
+  // Uploads employee data to the database
+  database.ref().push(newEntry);
+
+//.html
+//timeApart, nextTrain, tMinutesTillTrain, 
+
+
+
+
+
+    // var timeNow = moment().format("hh:mm");
+    // console.log(timeNow);
+
+    // var firstTime = moment(firstTrain, "hh:mm").subtract(1, "years");
+    // console.log(firstTime); 
+
+    // var timeDifference = moment().diff(moment.unix(firstTime), "minutes");
+    // console.log(timeDifference);
+
+    // var timeApart = timeDifference%frequency;
+    // console.log(timeApart);
 
     });
 
 
  database.ref().on("child_added", function(childSnapshot) {
-  console.log(childSnapshot);
+  var trainName = childSnapshot.val().trainName;
+  var destination = childSnapshot.val().destination;
+  var firstTrain = childSnapshot.val().firstTrain;
+  var frequency = childSnapshot.val().frequency;
+
+  console.log(trainName);
+  console.log(destination);
+  console.log(firstTrain);
+  console.log(frequency);
+
+    // Add each train's data into the table
+  $("#train-table > tbody").append("<tr><th>" + trainName + "</th><th>" + destination + "</th><th>" +
+  firstTrain + "</th><th>" + frequency + "</th><th>" );
+});
+
+
+
  });
 
-});
+
+
 
 
 //refer to 02-recentuserwithpush.html for more notes

@@ -19,9 +19,10 @@
 
     </style>
 
-    <title>Employee Data</title>
+    <title>Choo Choo</title>
 
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   // Initialize Firebase  
   </head>
 
@@ -37,13 +38,15 @@
     Current Employees
   </div>
   <table>
- <tr>
+ <tr id="train-table">
    <th><span style="margin-left: 2em;">Train Name</th></span>
    <th><span style="margin-left: 2em;">Destination</th></span>
    <th><span style="margin-left: 2em;">Frequency (min)</th></span>
    <th><span style="margin-left: 2em;">Next Arrival</th> </span> 
    <th><span style="margin-left: 2em;">Minutes Away</th></span>
  </tr>
+  <tbody>
+  </tbody>
 </table>
 
 </div>
@@ -52,28 +55,29 @@
   <div class="card-header">
     Train Schedule
   </div>
- <div class="form-group row">
- <label for="example-text-input" class="col-2 col-form-label" >Train Name</label>
- <div class="col-10">
-   <input class="form-control" type="text"  id="name-input">
- </div>
-</div>
-<div class="form-group row">
- <label for="example-search-input" class="col-2 col-form-label">Destination</label>
- <div class="col-10">
-   <input class="form-control" type="search"  id="destination-input">
- </div>
-</div>
-<div class="form-group row">
- <label for="example-email-input" class="col-2 col-form-label" >First Train (HH:mm - military time)</label>
- <div class="col-10">
-   <input class="form-control" type="email" id="first-train-input">
- </div>
-</div>
-<div class="form-group row">
- <label for="example-url-input" class="col-2 col-form-label" >Frequency(min)</label>
- <div class="col-10">
-   <input class="form-control" type="url" id="frequency-input">
+     <div class="form-group row">
+     <label for="example-text-input" class="col-2 col-form-label" >Train Name</label>
+     <div class="col-10">
+       <input class="form-control" type="text"  id="name-input">
+     </div>
+    </div>
+    <div class="form-group row">
+     <label for="example-search-input" class="col-2 col-form-label">Destination</label>
+     <div class="col-10">
+       <input class="form-control" type="search"  id="destination-input">
+     </div>
+    </div>
+    <div class="form-group row">
+     <label for="example-email-input" class="col-2 col-form-label" >First Train (HH:mm - military time)</label>
+     <div class="col-10">
+       <input class="form-control" type="email" id="first-train-input">
+     </div>
+    </div>
+    <div class="form-group row">
+     <label for="example-url-input" class="col-2 col-form-label" >Frequency(min)</label>
+     <div class="col-10">
+       <input class="form-control" type="url" id="frequency-input">
+
 
    <input type="submit" value="SUBMIT" id="submit-button">
 
@@ -81,6 +85,7 @@
 </div>
   </ul>
 </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
