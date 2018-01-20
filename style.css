@@ -1,0 +1,62 @@
+.panel-title {
+font-size: 16px;
+}
+
+.panel-primary {
+	border: 1px solid grey;
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 25px;
+}
+
+.panel-title {
+	border-radius: 4px;
+	background-color: #213b44;
+	color: white;
+	padding: 10px;
+
+}
+
+#add-employee-btn {
+	background-color: #213b44;
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 1px;
+	font-style: bold;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+h1 {
+
+	font-family: 'Playfair Display', serif;
+	font-size: 68px;
+
+}
+
+h3 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+
+th {
+	font-family: 'Raleway', sans-serif;
+	font-style: bold;
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: #213b44;
+
+}
+
+form {
+	font-family: 'Raleway', sans-serif;
+	font-style: bold;
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: #213b44;
+
+}

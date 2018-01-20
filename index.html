@@ -10,6 +10,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i|Raleway" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
     <style>
       table {
        font-family: arial, sans-serif;
@@ -21,70 +25,83 @@
 
     <title>Choo Choo</title>
 
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  // Initialize Firebase  
   </head>
 
   <body>
 
-    <div class="jumbotron">
-  <h1 class="display-4">Anytime is Train Time.</h1>
-  <p class="lead">Choo Choo.</p>
-</div>
+    <div class="container">
 
-<div class="card" style="width: 900px;">
-  <div class="card-header">
-    Current Employees
-  </div>
-  <table>
- <tr id="train-table">
-   <th><span style="margin-left: 2em;">Train Name</th></span>
-   <th><span style="margin-left: 2em;">Destination</th></span>
-   <th><span style="margin-left: 2em;">Frequency (min)</th></span>
-   <th><span style="margin-left: 2em;">Next Arrival</th> </span> 
-   <th><span style="margin-left: 2em;">Minutes Away</th></span>
- </tr>
-  <tbody>
-  </tbody>
-</table>
+      <!-- Jumbotron -->
+      <div class="jumbotron" style="background-color: light grey; color: black">
+        <img src="assets/train.png" alt="train" style="width:300px;">
 
-</div>
+        <h1 class="text-center">Anytime is Train Time</h1>
+        <h3 class="text-center">CHOO CHOO.</h3>
+      </div>
 
-<div class="card" style="width: 900px;">
-  <div class="card-header">
-    Train Schedule
-  </div>
-     <div class="form-group row">
-     <label for="example-text-input" class="col-2 col-form-label" >Train Name</label>
-     <div class="col-10">
-       <input class="form-control" type="text"  id="name-input">
-     </div>
+      <div class="row">
+
+        <div class="col-lg-12">
+
+        <!-- Current Employees-->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>CURRENT TRAIN SCHEDULE</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='train-table'>
+                <thead>
+                  <tr>
+                    <th>TRAIN NAME</th>
+                    <th>DESTINATION</th>
+                    <th>FREQUENCY</th>
+                    <th>NEXT ARRIVAL</th>
+                    <th>MINUTES AWAY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>ADD TRAIN</strong></h3>
+            </div>
+            <div class="panel-body">
+
+              <!-- Entry Form -->
+              <form>
+                <div class="form-group">
+                  <label for="employee-name-input">TRAIN NAME</label>
+                  <input class="form-control" id="name-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="role-input">DESTINATION</label>
+                  <input class="form-control" id="destination-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="start-input">FIRST TRAIN (hh:mm)</label>
+                  <input class="form-control" id="first-train-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="rate-input">FREQUENCY (minutes)</label>
+                  <input class="form-control" id="frequency-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="submit-btn" type="submit">SUBMIT</button>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-    <div class="form-group row">
-     <label for="example-search-input" class="col-2 col-form-label">Destination</label>
-     <div class="col-10">
-       <input class="form-control" type="search"  id="destination-input">
-     </div>
-    </div>
-    <div class="form-group row">
-     <label for="example-email-input" class="col-2 col-form-label" >First Train (HH:mm - military time)</label>
-     <div class="col-10">
-       <input class="form-control" type="email" id="first-train-input">
-     </div>
-    </div>
-    <div class="form-group row">
-     <label for="example-url-input" class="col-2 col-form-label" >Frequency(min)</label>
-     <div class="col-10">
-       <input class="form-control" type="url" id="frequency-input">
-
-
-   <input type="submit" value="SUBMIT" id="submit-button">
-
- </div>
-</div>
-  </ul>
-</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -92,7 +109,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js">
+  
+  </script>
     <script src = "train.js">
+
     </script>
 
     
