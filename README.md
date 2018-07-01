@@ -6,4 +6,4 @@ Used Firebase to host a globally available set of data that is retrieved and man
 
 You can find the site here:
 
-https://ebarraca.github.io/TrainSchedule/
+https://ebarraca.github.io/Train-Schedule-/
